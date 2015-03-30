@@ -8,7 +8,7 @@ var app = require('../app');
 var debug = require('debug')('nodejs:server');
 var http = require('http');
 var config = require('yaml-config');
-var parameters = config.readConfig('../config/parameters.yml');
+var parameters = config.readConfig('../config/app.yml');
 
 /**
  * Get port from environment and store in Express.
