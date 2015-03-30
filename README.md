@@ -11,3 +11,4 @@ Imdb-nodeJS
     npm i connect-mongo --save
     npm i bower --save
     bower install jquery.datagrid
+    bower install bootstrap

@@ -1,5 +1,14 @@
 {% extends '../layout.html' %}
 
+{% block topMenu %}
+{% include '../partials/public_menu.html' %}
+{% endblock %}
+
+{% block head %}
+    {% parent %}
+    <script src="/js/movie.js"></script>
+{% endblock %}
+
 {% block content %}
-    Hello!
+    <div id="datagrid"></div>
 {% endblock %}
