@@ -6,8 +6,16 @@ exports.post = function(req, res) {
     var limit = req.body.paging;
     var page = req.body.page || 1;
     var offset = (page -1) * limit;
-    var where = {};
-    var filter = {limit: limit, offset: offset};
+    var order = req.body.orderby || 'year';
+    var direction = req.body.direction;
+    var where = {
+
+    };
+    var filter = {
+        limit: limit,
+        offset: offset,
+        order: order + ' ' + direction
+    };
 
     async.parallel(
         [

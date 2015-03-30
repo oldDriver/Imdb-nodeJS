@@ -17,7 +17,7 @@ $(document).ready( function() {
                 field: 'id',
                 title: 'View',
                 render: function(data) {
-                    return '<a href="/movie/' + data.value + '">Edit<a>';
+                    return '<a href="/movie/' + data.value + '">View<a>';
                 }
             }
         ],
