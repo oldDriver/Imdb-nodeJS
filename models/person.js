@@ -9,11 +9,15 @@ module.exports = function(sequelize, DataTypes) {
         deathAt: DataTypes.DATEONLY
 
     }, {
-        tableName: 'person'
-    }, {
+        tableName: 'person',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here
+                Person.belongsToMany(models.Job,  {
+                    as: 'jobs',
+                    through: 'person_job_ref',
+                    foreignKey: 'person_id'
+                });
             }
         }
   });

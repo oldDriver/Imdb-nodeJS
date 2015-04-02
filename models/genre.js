@@ -5,13 +5,14 @@ module.exports = function(sequelize, DataTypes) {
         genre: DataTypes.STRING
 
     }, {
-        tableName: 'genre'
-    }, {
+        tableName: 'genre',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here
                 Genre.belongsToMany(models.Movie, {
-                    through: 'movie_genre_ref'
+                    as: 'movies',
+                    through: 'movie_genre_ref',
+                    foreignKey: 'genre_id'
                 });
             }
         }

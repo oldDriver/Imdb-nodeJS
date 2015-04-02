@@ -5,11 +5,15 @@ module.exports = function(sequelize, DataTypes) {
         job: DataTypes.STRING
 
     }, {
-        tableName: 'job'
-    }, {
+        tableName: 'job',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here
+                Job.belongsToMany(models.Person, {
+                    as: 'persons',
+                    through: 'person_job_ref',
+                    foreignKey: 'job_id'
+                });
             }
         }
     });

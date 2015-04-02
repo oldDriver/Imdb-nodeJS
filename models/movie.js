@@ -7,13 +7,14 @@ module.exports = function(sequelize, DataTypes) {
         poster: DataTypes.STRING
 
     }, {
-        tableName: 'movie'
-    }, {
+        tableName: 'movie',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here
                 Movie.belongsToMany(models.Genre, {
-                    through: 'movie_genre_ref'
+                    as: 'genres',
+                    through: 'movie_genre_ref',
+                    foreignKey: 'movie_id'
                 });
             }
         }

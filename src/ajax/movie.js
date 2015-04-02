@@ -15,17 +15,20 @@ exports.post = function (req, res, genre2) {
         offset: offset,
         order: order + ' ' + direction
     };
-    //if (genreId) {
-    //    models.Genre.find(req.body.genreId).then(function(genre){
-    //        console.log(genre);
-    //        //genre.getMovies(function(movies){
-    //        //    console.log(movies);
-    //        //});
-    //    });
-    //} else {
+    if (genreId) {
+        models.Genre.find(req.body.genreId).then(function(genre){
+            genre.getMovies(filter).on('success', function(result){
+                //console.log(result);
+                res.json({total: 100, data: result});
+            });
+            //genre.getMovies(function(movies){
+            //    console.log(movies);
+            //});
+        });
+    } else {
         models.Movie.findAndCountAll(filter).then(function (result) {
             res.json({total: result.count, data: result.rows});
         });
-    //}
+    }
 };
 

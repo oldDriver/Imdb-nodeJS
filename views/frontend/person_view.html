@@ -6,5 +6,7 @@
 
 {% block content %}
     {{ person.name }}
-    {{ person.imdbId }}
+    {% for job in person.getJobs() %}
+    {{ job.job }}
+{% endfor %}
 {% endblock %}
