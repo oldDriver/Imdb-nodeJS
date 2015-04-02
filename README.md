@@ -12,3 +12,8 @@ Imdb-nodeJS
     npm i bower --save
     bower install jquery.datagrid
     bower install bootstrap
+
+    npm uninstall jugglingdb-mysql
+
+    npm uninstall jugglingdb
+    npm install --save sequelize
