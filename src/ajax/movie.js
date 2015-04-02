@@ -1,5 +1,5 @@
 var Movie = require('./../../lib/entity/movie');
-var async = require('async');
+var Genre = require('./../../lib/entity/genre');
 
 exports.post = function(req, res) {
     var total = 0;
@@ -8,34 +8,15 @@ exports.post = function(req, res) {
     var offset = (page -1) * limit;
     var order = req.body.orderby || 'year';
     var direction = req.body.direction;
-    var where = {
-
-    };
     var filter = {
+        where: { },
         limit: limit,
         offset: offset,
         order: order + ' ' + direction
     };
 
-    async.parallel(
-        [
-            function(callback){
-                Movie.count(function(err, result) {
-                    if (err) callback(err, null);
-                    callback(null, result);
-                }, where)
-            },
-            function(callback){
-                Movie.all(filter, function(err, results){
-                    if (err) throw callback(err, {});
-                    callback(null, results);
-                })
-            }
-        ],
-        // optional callback
-        function(err, results){
-            res.json({total: results[0], data:results[1]});
-        }
-    );
+    Movie.findAndCountAll(filter).then(function(result){
+        res.json({total: result.count, data:result.rows});
+    });
 };
 

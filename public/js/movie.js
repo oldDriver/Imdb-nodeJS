@@ -1,3 +1,4 @@
+var genreId = null;
 $(document).ready( function() {
 
     $('#datagrid').datagrid({
@@ -24,6 +25,7 @@ $(document).ready( function() {
         attr: {
             "class": "table table-bordered table-condensed"
         },
+        paramsDefault: { genreId: genreId},
         sorter: "bootstrap",
         pager: "bootstrap"
     });

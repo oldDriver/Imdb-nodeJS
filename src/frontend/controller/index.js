@@ -1,3 +1,6 @@
 exports.get = function(req, res) {
-    res.render('frontend/index');
+    var genreId = req.params.genreId;
+    res.render('frontend/index', {
+        genreId: genreId
+    });
 };
