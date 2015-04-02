@@ -1,0 +1,15 @@
+{% extends '../layout.html' %}
+
+{% block topMenu %}
+{% include '../partials/public_menu.html' %}
+{% endblock %}
+
+{% block content %}
+    <ul>
+    {% for job in jobs %}
+        <li>
+            <a href="/persons/{{ job.id }}">{{ job.job }}</a>
+        </li>
+    {% endfor %}
+        </ul>
+{% endblock %}

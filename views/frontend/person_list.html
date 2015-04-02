@@ -1,0 +1,17 @@
+{% extends '../layout.html' %}
+
+{% block topMenu %}
+{% include '../partials/public_menu.html' %}
+{% endblock %}
+
+{% block head %}
+    {% parent %}
+    <script src="/js/person.js"></script>
+{% endblock %}
+
+{% block content %}
+    <script>
+        var jobId = {{ jobId }};
+    </script>
+    <div id="datagrid"></div>
+{% endblock %}
